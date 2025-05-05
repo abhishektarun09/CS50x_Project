@@ -1,1 +1,20 @@
-<h1>Welcome to the home page</h1>
+{% extends "layout.html" %}
+
+{% block title %}CarBecho{% endblock %}
+
+{% block main %}
+<div class="text-center">
+        <img src="{{ url_for('static', filename='images/index.jpg') }}" 
+         class="img-fluid my-4 shadow rounded" 
+         alt="AI predicting car price" 
+         style="max-height: 375px;">
+    <p class="lead">
+        This web app uses machine learning to predict the price of a car based on various features like brand, model, year, mileage, and more.
+    </p>
+
+    <p>
+        Enter your car details and get an instant price estimate powered by a trained predictive model.
+    </p>
+    <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg mt-4">Predict Car Price</a>
+</div>
+{% endblock %}

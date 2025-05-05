@@ -1,0 +1,77 @@
+/* Base layout enhancements */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #fefefe;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+    flex: 1;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa;
+}
+
+/* Navbar brand icon and styling */
+.navbar-brand {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+}
+
+/* Navigation active link styling */
+.nav-item.active .nav-link {
+    font-weight: bold;
+    color: #d85214 !important;
+    border-bottom: 2px solid #d85214;
+}
+
+/* Button tweaks */
+.btn-primary {
+    background-color: #d85214;
+    border-color: #d85214;
+    color: white;
+    padding: 0.6rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:visited {
+    background-color: #bf4310; /* Darker shade for hover */
+    border-color: #bf4310;
+    color: white;
+}
+
+:root {
+    --primary: #d85214;
+}
+
+.form-control:focus {
+    border-color: #d85214;
+    box-shadow: 0 0 0 0.2rem rgba(216, 82, 20, 0.25);
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    background-color: #d85214;
+    border-color: #d85214;
+}
+
+
+/* Navbar tweaks */
+.custom-navbar {
+    background-color: #ffffff; /* Deep blue */
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+    color: #2c2222 !important;
+}
+

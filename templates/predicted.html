@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Predicted
+{% endblock %}
+
+{% block main %}
+    <p class="h3 text-center mt-4">
+        Your Car could be sold for 
+        <span class="text-success font-weight-bold" style="font-size: 2rem;">
+            {{ results }}
+        </span>
+    </p>
+{% endblock %}
