@@ -51,6 +51,22 @@
         </div>
     </nav>
 
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="container mt-3">
+      {% for message in messages %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
     <!-- Main Content -->
     <main class="container my-5">
         {% block main %}
