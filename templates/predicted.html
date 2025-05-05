@@ -1,14 +1,23 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Predicted
+    CarBecho - Predicted
 {% endblock %}
 
 {% block main %}
-    <p class="h3 text-center mt-4">
-        Your Car could be sold for 
-        <span class="text-success font-weight-bold" style="font-size: 2rem;">
-            {{ results }}
-        </span>
-    </p>
+<div class="container my-5">
+    <div class="card shadow text-center mx-auto" style="max-width: 500px; border-left: 5px solid #28a745;">
+        <div class="card-body">
+            <h4 class="card-title mb-3">Prediction Result</h4>
+            <p class="card-text" style="font-size: 1.2rem;">
+                Based on your car’s details, the estimated selling price is:
+            </p>
+            <h2 class="text-success font-weight-bold">{{ results }}</h2>
+            <p class="mt-3 text-muted">This is an AI-powered estimate. Actual market prices may vary.</p>
+            <a href="{{ url_for('predict') }}" class="btn btn-outline-primary mt-4">
+                Try Another Prediction
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}

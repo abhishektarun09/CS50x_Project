@@ -75,3 +75,33 @@ input[type="radio"]:checked {
     color: #2c2222 !important;
 }
 
+.card {
+    border-radius: 12px;
+    border: none;
+}
+label {
+    font-weight: 600;
+}
+
+.btn-outline-primary {
+    color: #d85214;
+    border-color: #d85214;
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+    background-color: #d85214;
+    color: white;
+    border-color: #d85214;
+}
+
+section h2 {
+    font-weight: 600;
+}
+section .border {
+    border-color: #ececec !important;
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(50, 50, 50, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}

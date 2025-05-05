@@ -1,113 +1,93 @@
 {% extends "layout.html" %}
 
-{% block title %}Prediction{% endblock %}
+{% block title %}CarBecho - Prediction{% endblock %}
 
 {% block main %}
-<div class="login">
-    <div class="d-flex justify-content-center">
-        <h1>CarBecho</h1>
+<div class="container my-5">
+    <div class="card shadow p-4 mx-auto" style="max-width: 700px;">
+        <h2 class="text-center mb-4">Predict Your Car's Selling Price</h2>
+        
+        <form action="{{ url_for('predict') }}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <div class="form-group">
+                <label>Fuel</label>
+                <select class="form-control" name="fuel" required>
+                    <option selected disabled value="">Select Fuel Type</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="LPG">LPG</option>
+                    <option value="CNG">CNG</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Owner</label>
+                <select class="form-control" name="owner" required>
+                    <option selected disabled value="">Select Owner</option>
+                    <option value="First Owner">First Owner</option>
+                    <option value="Second Owner">Second Owner</option>
+                    <option value="Third Owner">Third Owner</option>
+                    <option value="Fourth & Above Owner">Fourth & Above Owner</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Seller Type</label>
+                <select class="form-control" name="seller_type" required>
+                    <option selected disabled value="">Select Seller Type</option>
+                    <option value="Individual">Individual</option>
+                    <option value="Dealer">Dealer</option>
+                    <option value="Trustmark Dealer">Trustmark Dealer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Transmission</label>
+                <select class="form-control" name="transmission" required>
+                    <option selected disabled value="">Select Transmission Type</option>
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>KMs Driven</label>
+                    <input type="number" class="form-control" name="km_driven" placeholder="e.g. 30000" min="0" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Mileage (kmpl)</label>
+                    <input type="number" class="form-control" name="mileage" placeholder="e.g. 18.5" min="0" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Engine (CC)</label>
+                    <input type="number" class="form-control" name="engine" placeholder="e.g. 1197" min="0" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Max Power (bhp)</label>
+                    <input type="number" class="form-control" name="max_power" placeholder="e.g. 90" min="0" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Seats</label>
+                    <input type="number" class="form-control" name="seats" placeholder="e.g. 5" min="1" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Age</label>
+                    <input type="number" class="form-control" name="age" placeholder="e.g. 3" min="0" required>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg mt-3">Predict Selling Price</button>
+            </div>
+        </form>
     </div>
-    <form action="{{ url_for('predict')}}" method="post">
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-    <div class="mb-3">
-        <label class="form-label">Fuel</label>
-        <select class="form-control" name="fuel" placeholder="Fuel Type"
-            required>
-            <option class="placeholder" selected disabled value="">Select Fuel Type</option>
-            <option value="Diesel">
-                Diesel
-            </option>
-            <option value="Petrol">
-                Petrol
-            </option>
-            <option value="LPG">
-                LPG
-            </option>
-            <option value="CNG">
-                CNG
-            </option>
-        </select>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Owner</label>
-        <select class="form-control" name="owner" placeholder="Owner"
-            required>
-            <option class="placeholder" selected disabled value="">Owner</option> ['First Owner' 'Second Owner' 'Third Owner' 'Fourth & Above Owner'
-            <option value="First Owner">
-                First Owner
-            </option>
-            <option value="Second Owner">
-                Second Owner
-            </option>
-            <option value="Third Owner">
-                Third Owner
-            </option>
-            <option value="Fourth & Above Owner">
-                Fourth & Above Owner
-            </option>
-        </select>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Seller Type</label>
-        <select class="form-control" name="seller_type" placeholder="Seller Type"
-            required>
-            <option class="placeholder" selected disabled value="">Select Seller Type</option>
-            <option value="Individual">
-                Individual
-            </option>
-            <option value="Dealer">
-                Dealer
-            </option>
-            <option value="Trustmark Dealer">
-                Trustmark Dealer
-            </option>
-        </select>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Transmission</label>
-        <select class="form-control" name="transmission" placeholder="Transmission Type"
-            required>
-            <option class="placeholder" selected disabled value="">Select Transmission Type</option>
-            <option value="Manual">
-                Manual
-            </option>
-            <option value="Automatic">
-                Automatic
-            </option>
-        </select>
-    </div>
-    <div class="mb-3">
-        <label class="form-label">KMs Driven</label>
-        <input class="form-control" type="number" name="km_driven"
-            placeholder="KMs Driven" min='0' />
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Mileage</label>
-        <input class="form-control" type="number" name="mileage"
-            placeholder="Mileage" min='0' />
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Engine</label>
-        <input class="form-control" type="number" name="engine"
-            placeholder="Engine (CC)" min='0' />
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Max Power</label>
-        <input class="form-control" type="number" name="max_power"
-            placeholder="Max Power (bhp)" min='0' />
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Seats</label>
-        <input class="form-control" type="number" name="seats"
-            placeholder="Seats" min='0' />
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Age</label>
-        <input class="form-control" type="number" name="age"
-            placeholder="Age" min='0' />
-    </div>
-    <div class="d-flex justify-content-center">
-        <input class="btn btn-primary" type="submit" value="Predict your Selling Price" required />
-    </div>
-</form>
+</div>
 {% endblock %}
