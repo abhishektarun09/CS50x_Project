@@ -1,1 +1,1 @@
-## CS50x Projectd
+## CS50x Project
