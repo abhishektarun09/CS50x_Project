@@ -22,13 +22,17 @@ from src.utils import apology, login_required
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
 
-user = os.getenv('MYSQL_USER')
-password = os.getenv('MYSQL_PASSWORD')
-host = os.getenv('MYSQL_HOST')
-port = os.getenv('MYSQL_PORT')
-db_name = os.getenv('MYSQL_DB')
+user = os.getenv("MYSQL_USER")
+password = os.getenv("MYSQL_PASSWORD")
+host = os.getenv("MYSQL_HOST")
+port = os.getenv("MYSQL_PORT")
+db_name = os.getenv("MYSQL_DB")
+ssl_ca_path = os.getenv("SSL_CA_PATH")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{user}:{password}@{host}:{port}/{db_name}'
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    f"mysql+pymysql://{user}:{password}@{host}:{port}/{db_name}"
+    f"?ssl_ca={ssl_ca_path}"
+)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
