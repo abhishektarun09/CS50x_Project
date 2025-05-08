@@ -13,7 +13,7 @@ RUN apt-get update -y && \
 
 # Install the dependencies from requirements.txt
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+    pip install --no-cache-dir --timeout=500 -r requirements.txt
 
 # Set the default command to run the Flask app
 CMD ["python3", "app.py"]
