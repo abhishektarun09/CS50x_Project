@@ -9,7 +9,9 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
 
 from dotenv import load_dotenv
-load_dotenv()
+if os.getenv("SSL_CA_PATH") != "/app/cert/DigiCertGlobalRootCA.crt.pem":
+    from dotenv import load_dotenv
+    load_dotenv()
 
 from babel.numbers import format_currency
 
@@ -43,6 +45,7 @@ class User(db.Model):
     hash = db.Column(db.String(500), nullable=False)
 
 with app.app_context():
+    print("SSL_CA_PATH used:", ssl_ca_path)
     db.create_all()
 
 # Configure session to use filesystem (instead of signed cookies)
