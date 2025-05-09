@@ -11,7 +11,6 @@ WORKDIR /app
 
 # Copy your application code and the SSL cert
 COPY . /app
-COPY cert/DigiCertGlobalRootCA.crt.pem /app/cert/DigiCertGlobalRootCA.crt.pem
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
