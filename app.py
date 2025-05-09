@@ -31,22 +31,22 @@ port = os.getenv("MYSQL_PORT")
 db_name = os.getenv("MYSQL_DB")
 ssl_ca_path = os.getenv("SSL_CA_PATH")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = (
+'''app.config['SQLALCHEMY_DATABASE_URI'] = (
     f"mysql+pymysql://{user}:{password}@{host}:{port}/{db_name}"
     f"?ssl_ca={ssl_ca_path}"
 )
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False'''
 
 db = SQLAlchemy(app)
 
-class User(db.Model):
+'''class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
-    hash = db.Column(db.String(500), nullable=False)
+    hash = db.Column(db.String(500), nullable=False)'''
 
-with app.app_context():
+'''with app.app_context():
     print("SSL_CA_PATH used:", ssl_ca_path)
-    db.create_all()
+    db.create_all()'''
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
