@@ -118,9 +118,11 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = user.id
+        
+        flash("Login Successful!")
 
         # Redirect user to home page
-        return redirect("/prediction")
+        return redirect("/")
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
@@ -178,9 +180,11 @@ def register():
 
             # Remember which user has logged in
             session["user_id"] = new_user.id
+            
+            flash("Registered!")
 
             # Redirect user to home page
-            return redirect("/prediction")
+            return redirect("/")
 
         except:
             # Username already exists
