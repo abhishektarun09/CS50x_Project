@@ -1,0 +1,2 @@
+# Ensure PEM files use LF (Unix-style) line endings, safe for Docker and Linux
+cert/*.pem text eol=lf

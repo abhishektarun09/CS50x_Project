@@ -8,7 +8,6 @@ from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
 
-from dotenv import load_dotenv
 if os.getenv("SSL_CA_PATH") != "/app/cert/DigiCertGlobalRootCA.crt.pem":
     from dotenv import load_dotenv
     load_dotenv()
@@ -30,12 +29,10 @@ host = os.getenv("MYSQL_HOST")
 port = os.getenv("MYSQL_PORT")
 db_name = os.getenv("MYSQL_DB")
 
-#Cert file path (test)
 base_dir = os.path.dirname(os.path.abspath(__file__))
 ssl_ca_path = os.path.join(base_dir, "cert", "DigiCertGlobalRootCA.crt.pem")
-#ssl_ca_path = os.getenv("SSL_CA_PATH")
 
-'''app.config['SQLALCHEMY_DATABASE_URI'] = (
+app.config['SQLALCHEMY_DATABASE_URI'] = (
     f"mysql+pymysql://{user}:{password}@{host}:{port}/{db_name}"
     f"?ssl_ca={ssl_ca_path}"
 )
@@ -50,7 +47,7 @@ class User(db.Model):
 
 with app.app_context():
     print("SSL_CA_PATH used:", ssl_ca_path)
-    db.create_all()'''
+    db.create_all()
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
